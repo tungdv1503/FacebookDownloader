@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbarStyle="outsideOverlay"
+    tools:context=".fragment.Cach1Framgnet">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="24dp"
+            app:cardCornerRadius="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/opensans_medium"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textSize="13dp"
+                            style="@style/textViewhelps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="@string/buoc1_cach1"
+                            android:layout_width="250dp"
+                            android:fontFamily="@font/opensans_medium"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_marginLeft="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="0dp"
+                            android:src="@drawable/image1" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="0dp"
+                            android:src="@drawable/image5" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignBottom="@+id/img1"
+
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="136dp"
+                            android:layout_marginTop="142dp"
+                            android:layout_marginBottom="42dp"
+                            android:src="@drawable/icon_share_" />
+                    </RelativeLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/opensans_medium"
+                            android:textSize="13dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center"
+                            android:text="2"
+                            style="@style/textViewhelps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="15dp"
+                            android:textColor="@color/black"
+                            android:text="@string/buoc2_cach1"
+                            android:layout_width="250dp"
+                            android:fontFamily="@font/opensans_medium"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_marginLeft="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="0dp"
+                            android:src="@drawable/image2" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="0dp"
+                            android:src="@drawable/image5" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignBottom="@+id/img2"
+
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="-5dp"
+                            android:layout_marginTop="142dp"
+                            android:layout_marginBottom="42dp"
+                            android:src="@drawable/icon_copy_link" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/opensans_medium"
+                            android:textSize="13dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center"
+                            android:text="3"
+                            style="@style/textViewhelps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:textSize="15dp"
+                            android:fontFamily="@font/opensans_medium"
+                            android:textColor="@color/black"
+                            android:text="@string/buoc3_cach1"
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_marginLeft="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="168dp"
+                            android:layout_height="168dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/home2" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/home3" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/img3"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="-5dp"
+                            android:layout_marginBottom="42dp"
+                            android:src="@drawable/frame5" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btn_DaHieu"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="22dp"
+            android:layout_gravity="center"
+            style="@style/btnDaHieu"
+            android:text="@string/DaHieu"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

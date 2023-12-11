@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="FBSave1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+
+        <item name="colorPrimary">@color/color5</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/color2</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/color3</item>
+        <item name="colorSecondaryVariant">@color/color4</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+
+    </style>
+</resources>
+<!--    parent="Theme.AppCompat.Light.NoActionBar"-->

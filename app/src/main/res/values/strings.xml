@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">FB Video Downloader</string>
+    <string name="download">Tải xuống</string>
+    <string name="patselink">Dán liên kết</string>
+    <string name="luuy">Lưu ý: Vui lòng tôn trọng tác phẩm gốc và quyền sở hữu trí tuệ</string>
+    <string name="share_to">Chia sẻ tới...</string>
+    <string name="delete">Xóa</string>
+    <string name="help">Hướng dẫn sử dụng</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buoc1_cach1">Mở ứng dụng, nhấp vào “Chia sẻ lên” của bài đăng</string>
+    <string name="buoc2_cach1">Nhấp vào “Sao chép liên kết" rồi mở app “DOUYIN SAVER"</string>
+    <string name="buoc3_cach1">Dán liên kết vừa sao chép vào đây, và tải về video thôi</string>
+    <string name="DaHieu">Đã hiểu</string>
+    <string name="nameCach2">Tải  xuống bằng cách chia sẻ</string>
+    <string name="buoc2_cach2">Vuốt sang trái và nhấp vào “Khác"</string>
+    <string name="tuychontaixuong">Tuỳ chọn tải xuống</string>
+    <string name="hint_link">https://www.facebook.com/</string>
+
+</resources>
