@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'com.example.fbvideodownloader'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.fbvideodownloader"
-        minSdk 21
-        targetSdk 32
+        minSdk 24
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -36,4 +36,26 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    //
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.27'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.0'
+    implementation 'com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10'
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.6'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.facebook.android:facebook-android-sdk:12.1.0'
+    implementation 'com.google.android.gms:play-services-ads:22.5.0'
+    def billing_version = "6.0.1"
+
+    implementation "com.android.billingclient:billing:$billing_version"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+
+    def lifecycle_version = '2.6.2'
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 }

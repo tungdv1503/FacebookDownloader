@@ -2,40 +2,149 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:paddingBottom="40dp"
+    android:background="@drawable/background_dialog_dowload"
     android:layout_height="wrap_content">
-   <LinearLayout
-       android:paddingLeft="24dp"
-       android:paddingRight="24dp"
-       android:weightSum="10"
-       android:orientation="horizontal"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-      <TextView
-          android:layout_weight="8"
-          android:textStyle="bold"
-          android:textSize="18dp"
-          android:textColor="@color/black"
-          android:text="@string/tuychontaixuong"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-      <ImageView
-          android:id="@+id/img_close"
-          android:layout_weight="2"
-          android:src="@drawable/icon_close"
-          android:layout_width="32dp"
-          android:layout_height="32dp"/>
-   </LinearLayout>
-   <LinearLayout
-       android:orientation="vertical"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content">
-          <ImageView
-              android:src="@drawable/icon_play_1_"
-              android:layout_width="32dp"
-              android:layout_height="32dp"/>
-       </LinearLayout>
-   </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:weightSum="10"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="8"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:text="@string/tuychontaixuong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/img_close"
+            android:layout_weight="2"
+            android:src="@drawable/icon_close"
+            android:layout_width="32dp"
+            android:layout_height="32dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="21dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/btn_downloadmp4"
+            android:orientation="horizontal"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/background_item_selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/icon_mp4"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp">
+                    <ImageView
+                        android:src="@drawable/icon_play1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <TextView
+                        android:text="Chất lượng bình thường"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/tv_namefilemp4"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black" />
+
+                    <!--                   <TextView-->
+                    <!--                       android:id="@+id/tv_sizefile"-->
+                    <!--                       android:layout_width="match_parent"-->
+                    <!--                       android:layout_height="wrap_content"-->
+                    <!--                       android:layout_alignParentBottom="true"-->
+                    <!--                       android:layout_marginBottom="2dp"-->
+                    <!--                       android:text="5,53 MB" />-->
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:id="@+id/btn_downloadmp3"
+            android:orientation="horizontal"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/background_item_selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/icon_mp4"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp">
+                    <ImageView
+                        android:src="@drawable/icon_play1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <TextView
+                        android:text="Chất lượng cao"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/tv_namefilemp3"
+                        android:layout_marginTop="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black" />
+
+                    <!--                   <TextView-->
+                    <!--                       android:id="@+id/tv_sizefile"-->
+                    <!--                       android:layout_width="match_parent"-->
+                    <!--                       android:layout_height="wrap_content"-->
+                    <!--                       android:layout_alignParentBottom="true"-->
+                    <!--                       android:layout_marginBottom="2dp"-->
+                    <!--                       android:text="5,53 MB" />-->
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

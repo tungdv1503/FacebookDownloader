@@ -14,5 +14,6 @@
     <color name="color3">#00C2FF</color>
     <color name="color4">#AFE7F8</color>
     <color name="color5">#1877F2</color>
-
+    <color name="colortext_dialog_noads">#475467</color>
+    <color name="color_item">#D9F1FF</color>
 </resources>
