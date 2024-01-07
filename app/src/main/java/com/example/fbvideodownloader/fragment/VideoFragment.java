@@ -80,7 +80,7 @@ public class VideoFragment extends Fragment {
                     grDanhSach.setAdapter(adapterMP4);
                     adapterMP4.notifyDataSetChanged();
                 }
-              int a =  mp4Files.size();
+                int a =  mp4Files.size();
                 Log.e("sizeMP4",a+"");
             } else {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);

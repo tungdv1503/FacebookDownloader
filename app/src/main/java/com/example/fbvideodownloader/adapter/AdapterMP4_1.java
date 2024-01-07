@@ -18,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 
 
+import com.example.fbvideodownloader.MusicActivity;
 import com.example.fbvideodownloader.R;
 import com.example.fbvideodownloader.model.MP4model;
 import com.example.fbvideodownloader.utils.FileHelper;
@@ -81,7 +82,8 @@ public class AdapterMP4_1 extends BaseAdapter {
             showPopup(view1,item);
         });
         holder.btnStartVideo.setOnClickListener(v -> {
-            startVideo(item.getTitle(), item.getParent());
+//            startVideo(item.getTitle(), item.getParent());
+            onItemClicked1(item.getPath());
         });
         return view;
     }
@@ -186,5 +188,11 @@ public class AdapterMP4_1 extends BaseAdapter {
     private int dpToPx(int dp) {
         float density = context.getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
+    }
+    public void onItemClicked1(String path){
+        Intent intent = new Intent(context, MusicActivity.class);
+        intent.putExtra("typeFile",1);
+        intent.putExtra("pathFile",path);
+        context.startActivity(intent);
     }
 }

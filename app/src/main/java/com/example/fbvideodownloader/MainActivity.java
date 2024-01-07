@@ -17,6 +17,8 @@ import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -32,6 +34,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -122,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
     private final AtomicBoolean isMobileAdsInitializeCalled = new AtomicBoolean(false);
     private static final long COUNTER_TIME_MILLISECONDS = 5000;
     private FrameLayout adContainerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,7 +180,8 @@ public class MainActivity extends AppCompatActivity {
                 new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345")).build());
         createTimer(COUNTER_TIME_MILLISECONDS);
     }
-    private void listener(){
+
+    private void listener() {
         itemMp4 = new ArrayList<>();
         handler = new Handler();
         findViewById(R.id.btn_paste).setOnClickListener(view -> {
@@ -191,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 edtsetLink.setText(pasteData);
             }
         });
+        String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + getString(R.string.app_name) + "/";
         findViewById(R.id.btn_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,24 +205,25 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, getString(R.string.no_internet), Toast.LENGTH_SHORT).show();
                     } else {
                         String url = edtsetLink.getText().toString();
-                        if (!url.isEmpty() && url.contains("fb")||url.contains("facebook")) {
-//                        Observable<String> observable = getResponseBody(url);
-//                        Observer<String> observer = getObserverBody();
-//                        observable.subscribeOn(Schedulers.io())
-//                                .observeOn(AndroidSchedulers.mainThread())
-//                                .subscribe(observer);
-
-//                            download(extractVideoCode(url));
-//                            final String URL = inputURl.getText().toString();
-//                            FbVideoDownloader downloader = new FbVideoDownloader(MainActivity.this,url);
-//                            downloader.DownloadVideo();
-//                        dialog.show();
-//                            String fileNameMP3 = "CTvideo_" +  System.currentTimeMillis() + ".mp4";
-//                            startDownload(url,fileNameMP3);
+                        if (!url.isEmpty() && url.contains("fb") || url.contains("facebook")) {
                             new Data().execute(url);
+
                         } else {
                             Toast.makeText(MainActivity.this, "Enter a Valid URL!!", Toast.LENGTH_SHORT).show();
                         }
+
+//                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse("https://video.xx.fbcdn.net/v/t42.1790-2/10000000_1353704461931107_5523603705264710712_n.mp4?_nc_cat=109&ccb=1-7&_nc_sid=55d0d3&efg=eyJybHIiOjQzOSwicmxhIjoxMjk1LCJ2ZW5jb2RlX3RhZyI6InN2ZV9zZCJ9&_nc_ohc=XtOg_0GTeiwAX-6DlnL&_nc_rml=0&rl=439&vabr=244&_nc_ht=video.fhan15-1.fna&oh=00_AfDR3eFlSLbtr17fwKN0EpvTl9cnWADUzmNhpEK4Hz8lpw&oe=659F6BBA"));
+//                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+//                        request.setTitle(getString(R.string.download));
+//                        request.setDescription("VideoNew.mp4");
+//                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+//                        request.setTitle(getString(R.string.download)+""+"VideoNew.mp4");
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                            final Uri uri = Uri.parse("file://" + destination + "VideoNew.mp4");
+//                            request.setDestinationUri(uri);
+//                            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+//                            manager.enqueue(request);
+//                        }
                     }
                 }
             }
@@ -244,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     private void DialogVip(Context context) {
         List<Vipmodel> list = new ArrayList<>();
         list.add(new Vipmodel("Tuần", 12000, 7));
@@ -286,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
         imagClose.setOnClickListener(v -> dialog1.dismiss());
         dialog1.show();
     }
+
     public static void setStatusBarGradiant(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
@@ -295,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
             window.setBackgroundDrawable(background);
         }
     }
+
     public boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -317,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
         view1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         view1.setBackgroundDrawableResource(R.drawable.boder_progressdialog);
     }
+
     private void startDownloadStatusBroadcastLoop(long downloadID, String namefile) {
         handler.postDelayed(new Runnable() {
             @Override
@@ -353,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     private void handleDownloadStatus(int status, String namefile1) {
         if (status == DownloadManager.STATUS_SUCCESSFUL) {
 
@@ -364,7 +376,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                       if (result.equals("mp4")) {
+                        if (result.equals("mp4")) {
                             itemMp4 = new ArrayList<>();
                             List<File> mp4Files = getMp4FilesFromFolder(folderPath1);
                             for (File mp4File : mp4Files) {
@@ -384,8 +396,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
         }
     }
+
     @SuppressLint("StaticFieldLeak")
-    private class Data extends AsyncTask<String, String,String> {
+    private class Data extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... strings) {
             HttpURLConnection connection;
@@ -402,28 +415,23 @@ public class MainActivity extends AppCompatActivity {
 
                 String buffer = "No URL";
                 String Line;
-                while ((Line = reader.readLine()) != null)
-                {
-                    if(Line.contains("og:video:url"))
-                    {
+                while ((Line = reader.readLine()) != null) {
+                    if (Line.contains("og:video:url")) {
                         Line = Line.substring(Line.indexOf("og:video:url"));
-                        if(Line.contains("og:title"))
-                        {
+                        if (Line.contains("og:title")) {
                             VideoTitle = Line.substring(Line.indexOf("og:title"));
-                            VideoTitle = VideoTitle.substring(ordinalIndexOf(VideoTitle,"\"",1)+1,ordinalIndexOf(VideoTitle,"\"",2));
+                            VideoTitle = VideoTitle.substring(ordinalIndexOf(VideoTitle, "\"", 1) + 1, ordinalIndexOf(VideoTitle, "\"", 2));
                         }
-                        Line = Line.substring(ordinalIndexOf(Line,"\"",1)+1,ordinalIndexOf(Line,"\"",2));
-                        if(Line.contains("amp;")) {
+                        Line = Line.substring(ordinalIndexOf(Line, "\"", 1) + 1, ordinalIndexOf(Line, "\"", 2));
+                        if (Line.contains("amp;")) {
                             Line = Line.replace("amp;", "");
                         }
-                        if(!Line.contains("https"))
-                        {
-                            Line = Line.replace("http","https");
+                        if (!Line.contains("https")) {
+                            Line = Line.replace("http", "https");
                         }
-                        buffer=Line;
+                        buffer = Line;
                         break;
-                    }
-                    else {
+                    } else {
                         buffer = "No URL";
                     }
                 }
@@ -435,45 +443,45 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + getString(R.string.app_name) + "/";
-            if(!s.contains("No URL")) {
-                if(VideoTitle == null || VideoTitle.equals(""))
-                {
-                    VideoTitle = "CT_fbVideo" + System.currentTimeMillis()+".mp4";
-                }
-                else {
+            Log.e("onPostExecute:s", s);
+            String destination = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/" + "FB Video Downloader" + "/";
+            File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), getString(R.string.app_name));
+
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+            if (!s.contains("No URL")) {
+                if (VideoTitle == null || VideoTitle.equals("")) {
+                    VideoTitle = "CT_fbVideo" + System.currentTimeMillis() + ".mp4";
+                } else {
                     VideoTitle = VideoTitle + ".mp4";
                 }
 //                File newFile = new File(path, VideoTitle);
                 try {
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(s));
-                    request.allowScanningByMediaScanner();
-                    request.setDescription(VideoTitle)
-                            .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE)
-                            .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI)
-//                            .setDestinationUri(Uri.fromFile(newFile))
-                            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                            .setVisibleInDownloadsUi(true);
-                    request.setTitle(getString(R.string.download)+VideoTitle);
+                    request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
+                    request.setTitle(getString(R.string.download));
+                    request.setDescription(VideoTitle);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    request.setTitle(getString(R.string.download) + "" + VideoTitle);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                         final Uri uri = Uri.parse("file://" + destination + VideoTitle);
                         request.setDestinationUri(uri);
                     } else {
-                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS + "/" + getString(R.string.app_name), VideoTitle);
+                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS + "/" + "FB Video Downloader", VideoTitle);
                     }
                     DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                   long DownLoadID = manager.enqueue(request);
+                    long DownLoadID = manager.enqueue(request);
                     startDownloadStatusBroadcastLoop(DownLoadID, VideoTitle);
                     isceck = true;
-                   dialog.show();
+                    dialog.show();
                 } catch (Exception e) {
                     Looper.prepare();
                     Looper.loop();
                     dialog.dismiss();
                 }
 
-            }
-            else {
+            } else {
                 Looper.prepare();
                 Looper.loop();
                 dialog.dismiss();
@@ -488,6 +496,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.dismiss();
         }
     }
+
     private static int ordinalIndexOf(String str, String substr, int n) {
         int pos = -1;
         do {
@@ -495,6 +504,7 @@ public class MainActivity extends AppCompatActivity {
         } while (n-- > 0 && pos != -1);
         return pos;
     }
+
     private void initializeMobileAdsSdk() {
         if (isMobileAdsInitializeCalled.getAndSet(true)) {
             return;
@@ -507,6 +517,7 @@ public class MainActivity extends AppCompatActivity {
         Application application = getApplication();
         ((MyApplication) application).loadAd(this);
     }
+
     private void initializeMobileAdsSdkBanner() {
         if (isMobileAdsInitializeCalled.getAndSet(true)) {
             return;
@@ -525,6 +536,7 @@ public class MainActivity extends AppCompatActivity {
             loadBanner();
         }
     }
+
     private void loadBanner() {
         adView = new AdManagerAdView(this);
         adView.setAdUnitId(AD_UNIT);
@@ -536,6 +548,7 @@ public class MainActivity extends AppCompatActivity {
         AdManagerAdRequest adRequest = new AdManagerAdRequest.Builder().build();
         adView.loadAd(adRequest);
     }
+
     private AdSize getAdSize() {
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -553,6 +566,7 @@ public class MainActivity extends AppCompatActivity {
         int adWidth = (int) (adWidthPixels / density);
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
     }
+
     private void createTimer(long time) {
 
         CountDownTimer countDownTimer =
@@ -568,7 +582,8 @@ public class MainActivity extends AppCompatActivity {
                 };
         countDownTimer.start();
     }
-    private void showInterstitialAds(){
+
+    private void showInterstitialAds() {
         Application application = getApplication();
         ((MyApplication) application)
                 .showAdIfAvailable(
